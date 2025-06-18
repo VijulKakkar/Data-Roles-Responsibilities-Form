@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Roles and Responsibilities Form</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom font import */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f2f5; /* Light gray background */
+        }
+        .hidden-section {
+            display: none;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-4">
+    <div class="bg-white p-8 rounded-xl shadow-lg w-full max-w-md border border-gray-200">
+        <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Data Roles and Responsibilities</h2>
+
+        <form>
+            <!-- Full Name Field -->
+            <div class="mb-6">
+                <label for="fullName" class="block text-gray-700 text-sm font-medium mb-2">Full Name</label>
+                <input
+                    type="text"
+                    id="fullName"
+                    name="fullName"
+                    placeholder="Enter your full name"
+                    class="shadow-sm appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
+                    required
+                >
+            </div>
+
+            <!-- Job Title Field -->
+            <div class="mb-6">
+                <label for="jobTitle" class="block text-gray-700 text-sm font-medium mb-2">Job Title</label>
+                <input
+                    type="text"
+                    id="jobTitle"
+                    name="jobTitle"
+                    placeholder="e.g., Senior Data Analyst"
+                    class="shadow-sm appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
+                    required
+                >
+            </div>
+
+            <!-- Primary Role Field - Single Select Dropdown -->
+            <div class="mb-6">
+                <label for="primaryRole" class="block text-gray-700 text-sm font-medium mb-2">Primary role that best represents you</label>
+                <div class="relative">
+                    <select
+                        id="primaryRole"
+                        name="primaryRole"
+                        class="block appearance-none w-full bg-white border border-gray-300 text-gray-700 py-3 px-4 pr-8 rounded-lg shadow-sm leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
+                        onchange="handleRoleChange('primary')"
+                        required
+                    >
+                        <option value="">Select a Primary Role</option>
+                        <option value="data_analyst">Data Analyst</option>
+                        <option value="database_administrator">Database Administrator</option>
+                        <option value="data_architect">Data Architect</option>
+                        <option value="data_engineer">Data Engineer</option>
+                        <option value="data_scientist">Data Scientist</option>
+                        <option value="data_tester">Data Tester</option>
+                        <option value="data_visualization_engineer">Data Visualization Engineer</option>
+                        <option value="ml_engineer">ML Engineer</option>
+                    </select>
+                    <!-- Dropdown arrow SVG for styling -->
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dynamic Fields for Primary Role -->
+            <div id="primaryRoleDetails" class="hidden-section border-t border-gray-200 pt-4 mt-4">
+                <p class="text-gray-800 text-md font-semibold mb-4">Details for Primary Role: <span id="primaryRoleDetailLabel"></span></p>
+
+                <div class="mb-6">
+                    <label for="primaryTools" class="block text-gray-700 text-sm font-medium mb-2">Tools and technologies used in this role:</label>
+                    <textarea
+                        id="primaryTools"
+                        name="primaryTools"
+                        rows="3"
+                        placeholder="e.g., Python, SQL, Tableau, Power BI"
+                        class="shadow-sm appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
+                    ></textarea>
+                </div>
+
+                <div class="mb-6">
+                    <label for="primaryDatabase" class="block text-gray-700 text-sm font-medium mb-2">Database system(s) you work with in this role:</label>
+                    <input
+                        type="text"
+                        id="primaryDatabase"
+                        name="primaryDatabase"
+                        placeholder="e.g., MySQL, PostgreSQL, MongoDB, Snowflake"
+                        class="shadow-sm appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
+                    >
+                </div>
+
+                <div class="mb-6">
+                    <label for="primaryExperienceRating" class="block text-gray-700 text-sm font-medium mb-2">How would you rate your experience level in this role?</label>
+                    <div class="relative">
+                        <select
+                            id="primaryExperienceRating"
+                            name="primaryExperienceRating"
+                            class="block appearance-none w-full bg-white border border-gray-300 text-gray-700 py-3 px-4 pr-8 rounded-lg shadow-sm leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
+                        >
+                            <option value="">Select Rating (1-10)</option>
+                            <option value="1">1 - Novice</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5 - Intermediate</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10 - Expert</option>
+                        </select>
+                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Years of Experience for Primary Role Field -->
+            <div class="mb-6">
+                <label for="yearsPrimaryExperience" class="block text-gray-700 text-sm font-medium mb-2">How many years of experience do you have in this primary role?</label>
+                <input
+                    type="number"
+                    id="yearsPrimaryExperience"
+                    name="yearsPrimaryExperience"
+                    placeholder="e.g., 5"
+                    min="0"
+                    class="shadow-sm appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
+                    required
+                >
+            </div>
+
+            <!-- Secondary Role Field -->
+            <div class="mb-6">
+                <label for="secondaryRole" class="block text-gray-700 text-sm font-medium mb-2">Secondary role that best represents you</label>
+                <div class="relative">
+                    <select
+                        id="secondaryRole"
+                        name="secondaryRole"
+                        class="block appearance-none w-full bg-white border border-gray-300 text-gray-700 py-3 px-4 pr-8 rounded-lg shadow-sm leading-tight focus:outline-none focus:ring-2 focus->
+                        <option value="">Select a Secondary Role</option>
+                        <option value="data_analyst">Data Analyst</option>
+                        <option value="database_administrator">Database Administrator</option>
+                        <option value="data_architect">Data Architect</option>
+                        <option value="data_engineer">Data Engineer</option>
+                        <option value="data_scientist">Data Scientist</option>
+                        <option value="data_tester">Data Tester</option>
+                        <option value="data_visualization_engineer">Data Visualization Engineer</option>
+                        <option value="ml_engineer">ML Engineer</option>
+                    </select>
+                    <!-- Dropdown arrow SVG for styling -->
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dynamic Fields for Secondary Role -->
+            <div id="secondaryRoleDetails" class="hidden-section border-t border-gray-200 pt-4 mt-4">
+                <p class="text-gray-800 text-md font-semibold mb-4">Details for Secondary Role: <span id="secondaryRoleDetailLabel"></span></p>
+
+                <div class="mb-6">
+                    <label for="secondaryTools" class="block text-gray-700 text-sm font-medium mb-2">Tools and technologies used in this role:</label>
+                    <textarea
+                        id="secondaryTools"
+                        name="secondaryTools"
+                        rows="3"
+                        placeholder="e.g., Python, SQL, Tableau, Power BI"
+                        class="shadow-sm appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
+                    ></textarea>
+                </div>
+
+                <div class="mb-6">
+                    <label for="secondaryDatabase" class="block text-gray-700 text-sm font-medium mb-2">Database system(s) you work with in this role:</label>
+                    <input
+                        type="text"
+                        id="secondaryDatabase"
+                        name="secondaryDatabase"
+                        placeholder="e.g., MySQL, PostgreSQL, MongoDB, Snowflake"
+                        class="shadow-sm appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
+                    >
+                </div>
+
+                <div class="mb-6">
+                    <label for="secondaryExperienceRating" class="block text-gray-700 text-sm font-medium mb-2">How would you rate your experience level in this role?</label>
+                    <div class="relative">
+                        <select
+                            id="secondaryExperienceRating"
+                            name="secondaryExperienceRating"
+                            class="block appearance-none w-full bg-white border border-gray-300 text-gray-700 py-3 px-4 pr-8 rounded-lg shadow-sm leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
+                        >
+                            <option value="">Select Rating (1-10)</option>
+                            <option value="1">1 - Novice</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5 - Intermediate</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10 - Expert</option>
+                        </select>
+                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Years of Experience for Secondary Role Field -->
+            <div class="mb-6">
+                <label for="yearsSecondaryExperience" class="block text-gray-700 text-sm font-medium mb-2">How many years of experience do you have in this secondary role?</label>
+                <input
+                    type="number"
+                    id="yearsSecondaryExperience"
+                    name="yearsSecondaryExperience"
+                    placeholder="e.g., 2"
+                    min="0"
+                    class="shadow-sm appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
+                    required
+                >
+            </div>
+
+            <!-- State/Province Field -->
+            <div class="mb-6">
+                <label for="stateProvince" class="block text-gray-700 text-sm font-medium mb-2">State/Province</label>
+                <div class="relative">
+                    <select
+                        id="stateProvince"
+                        name="stateProvince"
+                        class="block appearance-none w-full bg-white border border-gray-300 text-gray-700 py-3 px-4 pr-8 rounded-lg shadow-sm leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
+                        onchange="handleLocationChange()"
+                        required
+                    >
+                        <option value="">Select a State or Province</option>
+                        <optgroup label="United States">
+                            <option value="AL">Alabama</option>
+                            <option value="AK">Alaska</option>
+                            <option value="AZ">Arizona</option>
+                            <option value="AR">Arkansas</option>
+                            <option value="CA">California</option>
+                            <option value="CO">Colorado</option>
+                            <option value="CT">Connecticut</option>
+                            <option value="DE">Delaware</option>
+                            <option value="FL">Florida</option>
+                            <option value="GA">Georgia</option>
+                            <option value="HI">Hawaii</option>
+                            <option value="ID">Idaho</option>
+                            <option value="IL">Illinois</option>
+                            <option value="IN">Indiana</option>
+                            <option value="IA">Iowa</option>
+                            <option value="KS">Kansas</option>
+                            <option value="KY">Kentucky</option>
+                            <option value="LA">Louisiana</option>
+                            <option value="ME">Maine</option>
+                            <option value="MD">Maryland</option>
+                            <option value="MA">Massachusetts</option>
+                            <option value="MI">Michigan</option>
+                            <option value="MN">Minnesota</option>
+                            <option value="MS">Mississippi</option>
+                            <option value="MO">Missouri</option>
+                            <option value="MT">Montana</option>
+                            <option value="NE">Nebraska</option>
+                            <option value="NV">Nevada</option>
+                            <option value="NH">New Hampshire</option>
+                            <option value="NJ">New Jersey</option>
+                            <option value="NM">New Mexico</option>
+                            <option value="NY">New York</option>
+                            <option value="NC">North Carolina</option>
+                            <option value="ND">North Dakota</option>
+                            <option value="OH">Ohio</option>
+                            <option value="OK">Oklahoma</option>
+                            <option value="OR">Oregon</option>
+                            <option value="PA">Pennsylvania</option>
+                            <option value="RI">Rhode Island</option>
+                            <option value="SC">South Carolina</option>
+                            <option value="SD">South Dakota</option>
+                            <option value="TN">Tennessee</option>
+                            <option value="TX">Texas</option>
+                            <option value="UT">Utah</option>
+                            <option value="VT">Vermont</option>
+                            <option value="VA">Virginia</option>
+                            <option value="WA">Washington</option>
+                            <option value="WV">West Virginia</option>
+                            <option value="WI">Wisconsin</option>
+                            <option value="WY">Wyoming</option>
+                        </optgroup>
+                        <optgroup label="Canada">
+                            <option value="AB">Alberta</option>
+                            <option value="BC">British Columbia</option>
+                            <option value="MB">Manitoba</option>
+                            <option value="NB">New Brunswick</option>
+                            <option value="NL">Newfoundland and Labrador</option>
+                            <option value="NS">Nova Scotia</option>
+                            <option value="ON">Ontario</option>
+                            <option value="PE">Prince Edward Island</option>
+                            <option value="QC">Quebec</option>
+                            <option value="SK">Saskatchewan</option>
+                            <option value="NT">Northwest Territories</option>
+                            <option value="NU">Nunavut</option>
+                            <option value="YT">Yukon</option>
+                        </optgroup>
+                        <optgroup label="Mexico">
+                            <option value="AGU">Aguascalientes</option>
+                            <option value="BCN">Baja California</option>
+                            <option value="BCS">Baja California Sur</option>
+                            <option value="CAM">Campeche</option>
+                            <option value="CHP">Chiapas</option>
+                            <option value="CHI">Chihuahua</option>
+                            <option value="COA">Coahuila</option>
+                            <option value="COL">Colima</option>
+                            <option value="MEX">Mexico City</option>
+                            <option value="DUR">Durango</option>
+                            <option value="GUA">Guanajuato</option>
+                            <option value="GRO">Guerrero</option>
+                            <option value="HID">Hidalgo</option>
+                            <option value="JAL">Jalisco</option>
+                            <option value="MIC">Michoacán</option>
+                            <option value="MOR">Morelos</option>
+                            <option value="NAY">Nayarit</option>
+                            <option value="NLE">Nuevo León</option>
+                            <option value="OAX">Oaxaca</option>
+                            <option value="PUE">Puebla</option>
+                            <option value="QUE">Querétaro</option>
+                            <option value="ROO">Quintana Roo</option>
+                            <option value="SLP">San Luis Potosí</option>
+                            <option value="SIN">Sinaloa</option>
+                            <option value="SON">Sonora</option>
+                            <option value="TAB">Tabasco</option>
+                            <option value="TAM">Tamaulipas</option>
+                            <option value="TLA">Tlaxcala</option>
+                            <option value="VER">Veracruz</option>
+                            <option value="YUC">Yucatán</option>
+                            <option value="ZAC">Zacatecas</option>
+                        </optgroup>
+                    </select>
+                    <!-- Dropdown arrow SVG for styling -->
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- City Field -->
+            <div class="mb-6">
+                <label for="city" class="block text-gray-700 text-sm font-medium mb-2">City</label>
+                <div class="relative">
+                    <select
+                        id="city"
+                        name="city"
+                        class="block appearance-none w-full bg-white border border-gray-300 text-gray-700 py-3 px-4 pr-8 rounded-lg shadow-sm leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
+                        disabled
+                        required
+                    >
+                        <option value="">Select a City</option>
+                    </select>
+                    <!-- Dropdown arrow SVG for styling -->
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Country Field (Autofilled) -->
+            <div class="mb-8">
+                <label for="country" class="block text-gray-700 text-sm font-medium mb-2">Country</label>
+                <input
+                    type="text"
+                    id="country"
+                    name="country"
+                    placeholder="Country will be autofilled"
+                    class="shadow-sm appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 bg-gray-100 cursor-not-allowed leading-tight focus:outline-none transition duration-200"
+                    readonly
+                >
+            </div>
+
+            <!-- Submit Button (for demonstration) -->
+            <button
+                type="submit"
+                class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition duration-200 transform hover:scale-105"
+            >
+                Submit Form
+            </button>
+        </form>
+    </div>
+
+    <script>
+        // JavaScript object mapping state/province prefixes to countries
+        const countryMap = {
+            // United States states
+            'AL': 'USA', 'AK': 'USA', 'AZ': 'USA', 'AR': 'USA', 'CA': 'USA', 'CO': 'USA', 'CT': 'USA', 'DE': 'USA', 'FL': 'USA', 'GA': 'USA',
+            'HI': 'USA', 'ID': 'USA', 'IL': 'USA', 'IN': 'USA', 'IA': 'USA', 'KS': 'USA', 'KY': 'USA', 'LA': 'USA', 'ME': 'USA', 'MD': 'USA',
+            'MA': 'USA', 'MI': 'USA', 'MN': 'USA', 'MS': 'USA', 'MO': 'USA', 'MT': 'USA', 'NE': 'USA', 'NV': 'USA', 'NH': 'USA', 'NJ': 'USA',
+            'NM': 'USA', 'NY': 'USA', 'NC': 'USA', 'ND': 'USA', 'OH': 'USA', 'OK': 'USA', 'OR': 'USA', 'PA': 'USA', 'RI': 'USA', 'SC': 'USA',
+            'SD': 'USA', 'TN': 'USA', 'TX': 'USA', 'UT': 'USA', 'VT': 'USA', 'VA': 'USA', 'WA': 'USA', 'WV': 'USA', 'WI': 'USA', 'WY': 'USA',
+
+            // Canadian provinces/territories
+            'AB': 'Canada', 'BC': 'Canada', 'MB': 'Canada', 'NB': 'Canada', 'NL': 'Canada', 'NS': 'Canada', 'ON': 'Canada', 'PE': 'Canada',
+            'QC': 'Canada', 'SK': 'Canada', 'NT': 'Canada', 'NU': 'Canada', 'YT': 'Canada',
+
+            // Mexican states (using 3-letter codes for clarity)
+            'AGU': 'Mexico', 'BCN': 'Mexico', 'BCS': 'Mexico', 'CAM': 'Mexico', 'CHP': 'Mexico', 'CHI': 'Mexico', 'COA': 'Mexico', 'COL': 'Mexico',
+            'MEX': 'Mexico', /* Mexico City */ 'DUR': 'Mexico', 'GUA': 'Mexico', 'GRO': 'Mexico', 'HID': 'Mexico', 'JAL': 'Mexico', 'MIC': 'Mexico',
+            'MOR': 'Mexico', 'NAY': 'Mexico', 'NLE': 'Mexico', 'OAX': 'Mexico', 'PUE': 'Mexico', 'QUE': 'Mexico', 'ROO': 'Mexico', 'SLP': 'Mexico',
+            'SIN': 'Mexico', 'SON': 'Mexico', 'TAB': 'Mexico', 'TAM': 'Mexico', 'TLA': 'Mexico', 'VER': 'Mexico', 'YUC': 'Mexico', 'ZAC': 'Mexico'
+        };
+
+        // JavaScript object mapping state/province codes to arrays of major cities
+        const cityMap = {
+            // United States cities (sample for a few states)
+            'AL': ['Birmingham', 'Montgomery', 'Mobile'],
+            'AK': ['Anchorage', 'Fairbanks', 'Juneau'],
+            'AZ': ['Phoenix', 'Tucson', 'Mesa'],
+            'CA': ['Los Angeles', 'San Francisco', 'San Diego', 'Sacramento'],
+            'NY': ['New York City', 'Buffalo', 'Rochester'],
+            'TX': ['Houston', 'Dallas', 'Austin', 'San Antonio'],
+            'FL': ['Miami', 'Orlando', 'Tampa'],
+            'IL': ['Chicago', 'Aurora', 'Rockford'],
+            'PA': ['Philadelphia', 'Pittsburgh', 'Allentown'],
+            'GA': ['Atlanta', 'Augusta', 'Columbus'],
+            'MI': ['Detroit', 'Grand Rapids', 'Warren'],
+            'NC': ['Charlotte', 'Raleigh', 'Greensboro'],
+            'OH': ['Columbus', 'Cleveland', 'Cincinnati'],
+            'WA': ['Seattle', 'Spokane', 'Tacoma'],
+            'CO': ['Denver', 'Colorado Springs', 'Aurora'],
+            'MA': ['Boston', 'Worcester', 'Springfield'],
+            'VA': ['Virginia Beach', 'Norfolk', 'Chesapeake'],
+            // Add more US cities as needed
+
+            // Canadian cities (sample for a few provinces)
+            'AB': ['Calgary', 'Edmonton', 'Red Deer'],
+            'BC': ['Vancouver', 'Surrey', 'Burnaby'],
+            'MB': ['Winnipeg', 'Brandon', 'Steinbach'],
+            'ON': ['Toronto', 'Ottawa', 'Mississauga', 'Brampton'],
+            'QC': ['Montreal', 'Quebec City', 'Laval'],
+            'NS': ['Halifax', 'Dartmouth', 'Sydney'],
+            // Add more Canadian cities as needed
+
+            // Mexican cities (sample for a few states)
+            'MEX': ['Mexico City'], // Mexico City is its own state-level entity
+            'JAL': ['Guadalajara', 'Zapopan', 'Tlaquepaque'],
+            'NLE': ['Monterrey', 'Apodaca', 'San Nicolás de los Garza'],
+            'BCN': ['Tijuana', 'Mexicali', 'Ensenada'],
+            'PUE': ['Puebla City', 'Tehuacán', 'Atlixco'],
+            // Add more Mexican cities as needed
+        };
+
+        // Mapping of role values to displayable labels
+        const roleLabels = {
+            "data_analyst": "Data Analyst",
+            "database_administrator": "Database Administrator",
+            "data_architect": "Data Architect",
+            "data_engineer": "Data Engineer",
+            "data_scientist": "Data Scientist",
+            "data_tester": "Data Tester",
+            "data_visualization_engineer": "Data Visualization Engineer",
+            "ml_engineer": "ML Engineer"
+        };
+
+        /**
+         * Handles the change event for the state/province dropdown.
+         * Updates both the country field and the city dropdown based on the selection.
+         */
+        function handleLocationChange() {
+            const stateSelect = document.getElementById('stateProvince');
+            const selectedState = stateSelect.value;
+
+            autofillCountry(selectedState); // Call function to autofill country
+            populateCities(selectedState); // Call function to populate cities
+        }
+
+        /**
+         * Function to autofill the country based on the selected state/province.
+         * @param {string} selectedState - The value of the selected state/province.
+         */
+        function autofillCountry(selectedState) {
+            const countryInput = document.getElementById('country');
+            if (selectedState && countryMap[selectedState]) {
+                countryInput.value = countryMap[selectedState];
+            } else {
+                countryInput.value = '';
+            }
+        }
+
+        /**
+         * Function to populate the city dropdown based on the selected state/province.
+         * @param {string} selectedState - The value of the selected state/province.
+         */
+        function populateCities(selectedState) {
+            const citySelect = document.getElementById('city');
+            // Clear existing options
+            citySelect.innerHTML = '<option value="">Select a City</option>';
+
+            if (selectedState && cityMap[selectedState]) {
+                const cities = cityMap[selectedState].sort(); // Get and sort cities for the selected state
+                cities.forEach(city => {
+                    const option = document.createElement('option');
+                    option.value = city;
+                    option.textContent = city;
+                    citySelect.appendChild(option);
+                });
+                citySelect.disabled = false; // Enable city dropdown
+            } else {
+                citySelect.disabled = true; // Disable city dropdown if no state or no cities
+            }
+        }
+
+        /**
+         * Shows/hides and updates labels for dynamic role-specific fields.
+         * @param {string} roleType - 'primary' or 'secondary'
+         */
+        function handleRoleChange(roleType) {
+            const roleSelect = document.getElementById(`${roleType}Role`);
+            const roleDetailsDiv = document.getElementById(`${roleType}RoleDetails`);
+            const roleDetailLabelSpan = document.getElementById(`${roleType}RoleDetailLabel`);
+            const selectedRoleValue = roleSelect.value;
+
+            const toolsInput = document.getElementById(`${roleType}Tools`);
+            const databaseInput = document.getElementById(`${roleType}Database`);
+            const experienceRatingSelect = document.getElementById(`${roleType}ExperienceRating`);
+
+            if (selectedRoleValue && selectedRoleValue !== "") {
+                // Show the section
+                roleDetailsDiv.classList.remove('hidden-section');
+                // Update the label
+                roleDetailLabelSpan.textContent = roleLabels[selectedRoleValue] || selectedRoleValue;
+                // Make fields required if a role is selected (for robust validation)
+                toolsInput.setAttribute('required', 'true');
+                databaseInput.setAttribute('required', 'true');
+                experienceRatingSelect.setAttribute('required', 'true');
+            } else {
+                // Hide the section
+                roleDetailsDiv.classList.add('hidden-section');
+                // Clear the label and input values when hidden
+                roleDetailLabelSpan.textContent = '';
+                toolsInput.value = '';
+                databaseInput.value = '';
+                experienceRatingSelect.value = '';
+                // Make fields not required if no role is selected
+                toolsInput.removeAttribute('required');
+                databaseInput.removeAttribute('required');
+                experienceRatingSelect.removeAttribute('required');
+            }
+        }
+
+        // Initialize city dropdown state and role detail sections on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            const stateSelect = document.getElementById('stateProvince');
+            const citySelect = document.getElementById('city');
+            if (!stateSelect.value) {
+                citySelect.disabled = true;
+            }
+
+            // Initially hide and clear dynamic role sections
+            handleRoleChange('primary');
+            handleRoleChange('secondary');
+        });
+    </script>
+</body>
+</html>
